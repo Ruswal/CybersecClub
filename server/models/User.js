@@ -19,5 +19,4 @@ const userSchema = new Schema({
     },
 });
 
-const User = mongoos.model("User", userSchema);
-exports.User = User;
+module.exports = mongoos.model("User", userSchema);

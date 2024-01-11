@@ -7,6 +7,7 @@ import { useNavigate, useHistory } from "react-router-dom";
 import { CiChat1 } from "react-icons/ci";
 import { CgProfile } from "react-icons/cg";
 import Logo from "../assets/Cybersec_Art/logo.png";
+import { AiOutlineTeam } from "react-icons/ai";
 
 
 const Navbar = () => {

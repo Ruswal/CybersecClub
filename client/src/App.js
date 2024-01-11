@@ -2,10 +2,12 @@ import logo from "./logo.svg";
 import "./App.css";
 import Routers from "./Routers";
 import React, { useState, useEffect, createContext, useContext } from "react";
+import {ToastContainer} from "react-toastify";
 
 export const UserContext = createContext();
+export const backendUrl = "http://localhost:3001";
 function App() {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState({});
   return (
     <UserContext.Provider
       value={{
@@ -13,6 +15,7 @@ function App() {
         setUser,
       }}
     >
+      <ToastContainer />
       <Routers />
     </UserContext.Provider>
   );
