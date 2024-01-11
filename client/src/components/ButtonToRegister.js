@@ -187,7 +187,7 @@ const ButtonToRegister = () => {
           <h1>Register</h1>
         </div>
       )}
-      {Object.keys(user).length !==0 && (
+      {Object.keys(user).length !==0 && !showModal && (
         <h1 className="text-green-500 text-2xl ml-[-50px]">
             Welcome <span className="bg-gray-900 rounded-md p-1">{user.displayName}</span>!
         </h1>
