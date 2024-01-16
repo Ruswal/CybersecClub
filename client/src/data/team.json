@@ -1,0 +1,8 @@
+{
+    "team": [
+        { "name": "Andrew Petri", "position": "President", "pfp": "/Team_Pfp/ruswal.jpg" },
+        { "name": "Stayam Singh", "position": "Vice-President", "pfp": null },
+        { "name": "Raj Wadia", "position": "Operations Lead", "pfp": "/Team_Pfp/flux.jpg" }
+    ]
+
+}
