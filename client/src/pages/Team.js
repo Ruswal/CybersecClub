@@ -6,7 +6,7 @@ const Team = () => {
   console.log(teamArr[2].pfp)
 
   return (
-    <div className="flex items-center justify-center bg-black">
+    <div className="flex items-center justify-center bg-white">
       <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20 h-[100vh]">
         <div className="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-screen md:mb-12">
           <div className="">
@@ -15,7 +15,7 @@ const Team = () => {
             </p>
           </div>
         </div>
-        <div className="flex flex-wrap gap-28 mx-auto lg:max-w-screen-xl top-50 mt-24">
+        <div className="flex flex-wrap gap-28 mx-auto h-[60vh] items-center justify-center lg:max-w-screen-xl top-50 mt-24">
         {teamArr.map(item => (
             <div className="flex">
             <img
