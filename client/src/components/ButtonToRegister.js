@@ -50,11 +50,15 @@ const ButtonToRegister = () => {
           setUser(res.data);
           if (res.status === 409) {
             console.log("loggedin successfully");
+          } else if (res.status === 200) {
+            setShowModal(true);
           }
         });
     } catch (err) {
       if (err.response.status === 404) {
-        setShowModal(true);
+        toast.error("Something's wrong, please reload")
+        // why do we have this ?, asking to myself, gotta check it out late on
+        // setShowModal(true);
       }
     }
   };
@@ -187,9 +191,11 @@ const ButtonToRegister = () => {
           <h1>Register</h1>
         </div>
       )}
-      {Object.keys(user).length !==0 && !showModal && (
-        <h1 className="text-green-500 text-2xl ml-[-50px]">
-            Welcome <span className="bg-gray-900 rounded-md p-1">{user.displayName}</span>!
+      {Object.keys(user).length !== 0 && !showModal && (
+        <h1 className="text-green-500 text-2xl ml-[-50px] gap-4">
+          Ohoye{" "}
+          <span className="bg-gray-900 rounded-md p-1">{user.displayName}</span>
+          !
         </h1>
       )}
     </Html>

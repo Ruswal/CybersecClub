@@ -10,7 +10,7 @@ const Hero = () => {
     const myRef = useRef();
     const [rotateX, setRotateX] = useState(0);
     useFrame(() => {
-        setRotateX(rotateX + 0.01);
+        setRotateX(rotateX + 0.005);
     })
     return (
         <animated.mesh rotation={[0, rotateX, 0]} position={[0, -1, 0]} ref={myRef}>
