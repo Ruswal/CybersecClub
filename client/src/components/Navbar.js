@@ -30,7 +30,7 @@ const Navbar = () => {
           <li onClick={() => navigate("/team")} className="p-2 cursor-pointer">Team</li>
           <li onClick={() => navigate("/about-us")} className="p-2 cursor-pointer">About us</li>
           <li className="p-2 cursor-pointer">Resources</li>
-          <li className="p-2 cursor-pointer">Discord</li>
+          <li className="p-2 cursor-pointer"><a href="https://discord.gg/46w4C6ApzF" target="_blank">Discord</a></li>
         </ul>
       </ul>
     </div>
