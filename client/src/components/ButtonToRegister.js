@@ -164,6 +164,7 @@ const ButtonToRegister = () => {
       {!showModal && (
         <div className="z-[99999] absolute md:ml-[-300px] sm:ml-[-300px] ml-[-100px] mt-[-200px] items-start flex justify-start text-green-400 text-3xl">
           <Typewriter
+          className="bg-transparent"
             onInit={(typewriter) => {
               typewriter
                 .typeString("Welcome to UofR Cybersecurity Club!")
@@ -192,7 +193,7 @@ const ButtonToRegister = () => {
         </div>
       )}
       {Object.keys(user).length !== 0 && !showModal && (
-        <h1 className="text-green-500 text-2xl ml-[-50px] gap-4">
+        <h1 className="text-green-500 bg-transparent w-[200px] text-2xl ml-[-50px] gap-4">
           Ohoye{" "}
           <span className="bg-gray-900 rounded-md p-1">{user.displayName}</span>
           !
