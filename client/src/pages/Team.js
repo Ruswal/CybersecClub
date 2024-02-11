@@ -15,9 +15,9 @@ const Team = () => {
             </p>
           </div>
         </div>
-        <div className="flex flex-wrap gap-28 mx-auto items-center justify-center lg:max-w-screen-xl top-50 mt-24">
+        <div className="flex flex-wrap gap-28 items-center justify-center lg:max-w-screen-xl mt-24">
         {teamArr.map(item => (
-            <div className="flex">
+            <div className="flex min-w-[375px] gap-2">
             <img
               className="object-cover w-32 h-32 mr-4 rounded-lg shadow"
               src={item.pfp == null ? process.env.PUBLIC_URL  + "/Team_Pfp/default.jpg" : process.env.PUBLIC_URL + item.pfp}
