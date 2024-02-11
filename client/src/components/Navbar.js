@@ -33,8 +33,8 @@ const Navbar = () => {
         <div className="hidden md:flex gap-2 items-center">
           <li onClick={() => navigate("/team")} className="p-2 cursor-pointer">Team</li>
           <li onClick={() => navigate("/about-us")} className="p-2 cursor-pointer">About us</li>
-          <li className="p-2 cursor-pointer">Resources</li>
-          <li className="p-2 cursor-pointer">Discord</li>
+          <li onClick={() => navigate("/events")} className="p-2 cursor-pointer">Events</li>
+          <li className="p-2 cursor-pointer"><a href="https://discord.gg/46w4C6ApzF" target="_blank">Discord</a></li>
         </div>
         <div className="md:hidden flex flex-col">
         <button onClick={toggleMenu} className="block text-green-400 focus:outline-none flex justify-end">
@@ -48,8 +48,8 @@ const Navbar = () => {
             <ul className="flex flex-col items-end text-center bg-transparent">
               <li onClick={() => navigate("/team")} className="p-2 cursor-pointer">Team</li>
               <li onClick={() => navigate("/about-us")} className="p-2 cursor-pointer">About us</li>
-              <li className="p-2 cursor-pointer">Resources</li>
-              <li className="p-2 cursor-pointer">Discord</li>
+              <li onClick={() => navigate("/events")} className="p-2 cursor-pointer">Events</li>
+              <li className="p-2 cursor-pointer"><a href="https://discord.gg/46w4C6ApzF" target="_blank">Discord</a></li>
             </ul>
           )}
           
