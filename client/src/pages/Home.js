@@ -11,6 +11,7 @@ const Home = () => {
         <Canvas style={{ height: "100vh", backgroundColor: "black" }}>
           <OrbitControls enablePan={false} enableZoom={false} />
           <ambientLight intensity={1} />
+          <spotLight intensity={80} position={[0, 3, 0]}/>
           <Hero />
         </Canvas>
         <ButtonToRegister />
