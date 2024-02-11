@@ -96,7 +96,7 @@ const ButtonToRegister = () => {
   };
 
   return (
-    <Html>
+    <>
       {showModal && (
         <ReactModal
           isOpen={showModal}
@@ -161,45 +161,48 @@ const ButtonToRegister = () => {
           </div>
         </ReactModal>
       )}
-      {!showModal && (
-        <div className="z-[99999] absolute md:ml-[-300px] sm:ml-[-300px] ml-[-100px] mt-[-200px] items-start flex justify-start text-green-400 text-3xl">
-          <Typewriter
-          className="bg-transparent"
-            onInit={(typewriter) => {
-              typewriter
-                .typeString("Welcome to UofR Cybersecurity Club!")
-                .callFunction(() => {
-                  console.log("String typed out!");
-                })
-                .pauseFor(2500)
-                .deleteAll()
-                .typeString(
-                  "We are a club dedicated to learning about cybersecurity."
-                )
-                .start();
-            }}
-            options={{
-              loop: true,
-            }}
-          />
-        </div>
-      )}
-      {!showModal && Object.keys(user).length === 0 && (
-        <div
-          onClick={signIn}
-          className="bg-gray-900 hover:text-green-500 cursor-pointer text-green-400 p-2 rounded-md"
-        >
-          <h1>Register</h1>
-        </div>
-      )}
-      {Object.keys(user).length !== 0 && !showModal && (
-        <h1 className="text-green-500 bg-transparent w-[200px] text-2xl ml-[-50px] gap-4">
-          Ohoye{" "}
-          <span className="bg-gray-900 rounded-md p-1">{user.displayName}</span>
-          !
-        </h1>
-      )}
-    </Html>
+      <div className="flex items-center justify-center absolute bg-transparent">
+        {!showModal && (
+          <div className="z-[99999] absolute md:ml-[-300px] sm:ml-[-300px] ml-[-100px] mt-[-200px] items-start flex justify-start text-green-400 text-3xl">
+            <Typewriter
+            style={{ backgroundColor: "transparent" }}
+              className="bg-transparent"
+              onInit={(typewriter) => {
+                typewriter
+                  .typeString("Welcome to UofR Cybersecurity Club!")
+                  .callFunction(() => {
+                    console.log("String typed out!");
+                  })
+                  .pauseFor(2500)
+                  .deleteAll()
+                  .typeString(
+                    "We are a club dedicated to learning about cybersecurity."
+                  )
+                  .start();
+              }}
+              options={{
+                loop: true,
+              }}
+            />
+          </div>
+        )}
+        {!showModal && Object.keys(user).length === 0 && (
+          <div
+            onClick={signIn}
+            className="bg-gray-900 hover:text-green-500 cursor-pointer text-green-400 p-2 rounded-md"
+          >
+            <h1>Register</h1>
+          </div>
+        )}
+        {Object.keys(user).length !== 0 && !showModal && (
+          <h1 className="text-green-500 bg-transparent w-[200px] text-2xl ml-[-50px] gap-4">
+            Ohoye{" "}
+            <span className="bg-gray-900 rounded-md p-1">{user.displayName}</span>
+            !
+          </h1>
+        )}
+      </div>
+    </>
   );
 };
 
