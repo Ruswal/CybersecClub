@@ -4,6 +4,8 @@ import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Team from "./pages/Team";
 import About from "./pages/About";
+import Events from "./pages/Events";
+import RegisterForSingleEvent from "./pages/SingleEvent";
 
 const Routers = () => {
   return (
@@ -13,7 +15,9 @@ const Routers = () => {
         <Route path="/" element={<Home />} />
         <Route path="/Team" element={<Team />}/>
         <Route path="/about-us" element={<About />} />
-      </Routes>
+        <Route path="/events" element={<Events />} />
+        <Route path="/events/:id" element={<RegisterForSingleEvent />} />
+       </Routes>
     </BrowserRouter>
   );
 };

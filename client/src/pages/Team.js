@@ -6,7 +6,7 @@ const Team = () => {
   console.log(teamArr[2].pfp)
 
   return (
-    <div className="flex bg-black items-center justify-center bg-white">
+    <div className="flex bg-black items-center justify-center">
       <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20 h-[70vh]">
         <div className="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-screen md:mb-12">
           <div className="">

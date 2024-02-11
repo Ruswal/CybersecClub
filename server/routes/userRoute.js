@@ -13,5 +13,7 @@ Router.post(
   UserController.addUsers
 );
 
+Router.get("/getevents/:id", UserController.getEventById);
+
 const UserRoutes = Router;
 module.exports = UserRoutes;

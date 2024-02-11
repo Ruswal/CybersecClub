@@ -3,6 +3,7 @@ const app = express();
 const User = require("../models/User");
 const admin = require("firebase-admin");
 const serviceAccount = require("./uofrcybersecurity-firebase-adminsdk-ji11e-b4eb398279.json");
+const Events = require("../models/Events");
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
@@ -70,3 +71,19 @@ exports.addUsers = async (req, res) => {
     console.error(err);
   }
 };
+
+exports.getEventById = async(req, res) => {
+  const id = req.params.id;
+  try {
+    const event = await Events.findById(id);
+    if (event) {
+      res.status(200).json(event);
+    } else {
+      res.status(404).json("Event not found!");
+    }
+  } catch(err){
+    console.error(err);
+    res.status(500).json("Internal Server Error");
+  }
+}
+
