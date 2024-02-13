@@ -12,8 +12,8 @@ const Home = () => {
           <OrbitControls enablePan={false} enableZoom={false} />
           <ambientLight intensity={1} />
           <Hero />
-          <ButtonToRegister />
         </Canvas>
+        <ButtonToRegister />
       </Suspense>
     </div>
   )
