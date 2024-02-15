@@ -19,6 +19,47 @@ import { UserContext, backendUrl } from "../App";
 const Navbar = () => {
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
+  const { user, setUser } = useContext(UserContext);
+
+  // const createUser = async () => {
+  //   await axios
+  //     .post(
+  //       `${backendUrl}/api/user/createuser`,
+  //       {
+  //         name: user.displayName,
+  //         email: user.email,
+  //         image: user.photoURL,
+  //         major: major,
+  //         year: year,
+  //       },
+  //       {
+  //         headers: {
+  //           Authorization: localStorage.getItem("auth_token"),
+  //           email: user.email,
+  //         },
+  //       }
+  //     )
+  //     .then((res) => toast.success("Registered successfully!"));
+  // };
+
+  useEffect(() => {
+    const auth = getAuth();
+    onAuthStateChanged(auth, (userInside) => {
+      console.log(Object.keys(userInside).length, Object.keys(user).length, "userrr")
+      if (Object.keys(userInside).length > 0 && Object.keys(user).length === 0) {
+        setUser(userInside);
+        if(localStorage.getItem("auth_token") === null){
+          userInside.getIdToken().then((token) => {
+            localStorage.setItem
+            ("auth_token", token);
+          }
+          );
+        }
+      } else {
+        console.log("no user");
+      }
+    });
+  }, []);
 
   const toggleMenu = () => {
     setShow(!show);
@@ -26,7 +67,7 @@ const Navbar = () => {
 
   return (
     <div className="bg-transparent">
-      <ul className="flex bg-transparent justify-between p-4 text-green-400">
+      <ul className="flex bg-transparent justify-between p-2 px-4 text-green-400">
         <li>
           <img onClick={() => navigate("/")} src={Logo} className="cursor-pointer h-16 p-2" alt="Logo" />
         </li>
@@ -52,7 +93,6 @@ const Navbar = () => {
               <li className="p-2 cursor-pointer"><a href="https://discord.gg/46w4C6ApzF" target="_blank">Discord</a></li>
             </ul>
           )}
-          
         </div>
       </ul>
     </div>

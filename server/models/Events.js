@@ -22,6 +22,28 @@ const eventSchema = new Schema({
         type: String,
         required: true,
     },
+    registrants: [{
+        email: {
+            type: String,
+            required: true
+        },
+        number: {
+            type: String,
+        },
+        major: {
+            type: String,
+        },
+        year: {
+            type: Number,
+        },
+        name: {
+            type: String,
+            required: true
+        },
+        company: {
+            type: String,
+        }
+    }]
 }, {
     timestamps: true,
 });

@@ -31,6 +31,7 @@ exports.authMiddleware = (req, res, next) => {
 
 exports.getUserByEmail = async (req, res) => {
   const email = req.headers.email;
+  console.log(email);
   try {
     const result = await User.findOne({ email: email });
     if (result) {
@@ -40,6 +41,7 @@ exports.getUserByEmail = async (req, res) => {
     }
   } catch (err) {
     console.error(err);
+    res.status(500).json("Internal Server Error");
   }
 };
 
@@ -64,6 +66,7 @@ exports.addUsers = async (req, res) => {
         ) {
           res.status(409).json("User already exists!");
         } else {
+          console.error(err);
           res.status(500).json("Internal Server Error");
         }
       });
@@ -86,4 +89,3 @@ exports.getEventById = async(req, res) => {
     res.status(500).json("Internal Server Error");
   }
 }
-
