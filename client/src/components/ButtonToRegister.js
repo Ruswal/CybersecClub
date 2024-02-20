@@ -114,6 +114,7 @@ const ButtonToRegister = () => {
             setShowModal(true);
           } else {
             console.log("Error", err);
+            localStorage.removeItem("auth_token");
           }
         // }
       });
