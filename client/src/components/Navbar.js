@@ -48,10 +48,10 @@ const Navbar = () => {
       console.log(Object.keys(userInside).length, Object.keys(user).length, "userrr")
       if (Object.keys(userInside).length > 0 && Object.keys(user).length === 0) {
         setUser(userInside);
-        if(localStorage.getItem("auth_token") === null){
+        if (localStorage.getItem("auth_token") === null) {
           userInside.getIdToken().then((token) => {
             localStorage.setItem
-            ("auth_token", token);
+              ("auth_token", token);
           }
           );
         }
@@ -78,7 +78,7 @@ const Navbar = () => {
           <li className="p-2 cursor-pointer"><a href="https://discord.gg/46w4C6ApzF" target="_blank">Discord</a></li>
         </div>
         <div className="md:hidden flex flex-col">
-        <button onClick={toggleMenu} className="block text-green-400 focus:outline-none flex justify-end">
+          <button onClick={toggleMenu} className="block text-green-400 focus:outline-none flex justify-end">
             <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
               xmlns="http://www.w3.org/2000/svg">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
@@ -89,7 +89,9 @@ const Navbar = () => {
             <ul className="flex flex-col items-end text-center bg-transparent">
               <li onClick={() => navigate("/team")} className="p-2 cursor-pointer">Team</li>
               <li onClick={() => navigate("/about-us")} className="p-2 cursor-pointer">About us</li>
-              <li onClick={() => navigate("/events")} className="p-2 cursor-pointer">Events</li>
+              {Object.keys(user).length > 0 && (
+                <li onClick={() => navigate("/events")} className="p-2 cursor-pointer">Events</li>
+              )}
               <li className="p-2 cursor-pointer"><a href="https://discord.gg/46w4C6ApzF" target="_blank">Discord</a></li>
             </ul>
           )}

@@ -6,8 +6,11 @@ import Team from "./pages/Team";
 import About from "./pages/About";
 import Events from "./pages/Events";
 import RegisterForSingleEvent from "./pages/SingleEvent";
+import { UserContext } from "./App";
+import { useContext } from "react";
 
 const Routers = () => {
+  const { user } = useContext(UserContext);
   return (
     <BrowserRouter>
       <Navbar />
@@ -15,8 +18,8 @@ const Routers = () => {
         <Route path="/" element={<Home />} />
         <Route path="/Team" element={<Team />}/>
         <Route path="/about-us" element={<About />} />
-        <Route path="/events" element={<Events />} />
-        <Route path="/events/:id" element={<RegisterForSingleEvent />} />
+        <Route path="/events" element={Object.keys(user).length > 0 ? <Events /> : <Home />} />
+        <Route path="/event/:id" element={<RegisterForSingleEvent />} />
        </Routes>
     </BrowserRouter>
   );

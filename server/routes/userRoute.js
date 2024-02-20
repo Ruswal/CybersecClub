@@ -13,7 +13,11 @@ Router.post(
   UserController.addUsers
 );
 
+Router.get("/getevents", UserController.authMiddleware, UserController.getAllEvents);
+
 Router.get("/getevents/:id", UserController.getEventById);
+
+Router.put("/updateevent/:id", UserController.authMiddleware, UserController.addUserRegistrant);
 
 const UserRoutes = Router;
 module.exports = UserRoutes;

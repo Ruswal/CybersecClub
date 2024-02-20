@@ -91,12 +91,58 @@ exports.addUsers = async (req, res) => {
   }
 };
 
+exports.getAllEvents = async (req, res) => {
+  try {
+    const events = await Events.find();
+    const filteredEvents = events.map((event) => {
+      return {
+        title: event.title,
+        description: event.description,
+        image: event.image,
+        Date: event.Date,
+        location: event.location,
+        _id: event._id
+      };
+    });
+    res.status(200).json(filteredEvents);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json("Internal Server Error");
+  }
+}
+
 exports.getEventById = async (req, res) => {
   const id = req.params.id;
   try {
     const event = await Events.findById(id);
     if (event) {
       res.status(200).json(event);
+    } else {
+      res.status(404).json("Event not found!");
+    }
+  } catch (err) {
+    console.error(err);
+    res.status(500).json("Internal Server Error");
+  }
+}
+
+exports.addUserRegistrant = async (req, res) => {
+  const { email, number, major, year, name, company } = req.body;
+  const id = req.params.id;
+  try {
+    const event = await Events.findById(id);
+    if (event) {
+      const registrant = {
+        email,
+        number,
+        major,
+        year,
+        name,
+        company
+      };
+      event.registrants.push(registrant);
+      await event.save();
+      res.status(200).json("Registrant added successfully!");
     } else {
       res.status(404).json("Event not found!");
     }
