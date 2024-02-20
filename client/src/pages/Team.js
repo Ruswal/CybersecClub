@@ -19,6 +19,7 @@ const Team = () => {
         {teamArr.map(item => (
             <div className="flex min-w-[375px] gap-2">
             <img
+            loading="lazy"
               className="object-cover w-32 h-32 mr-4 rounded-lg shadow"
               src={item.pfp == null ? process.env.PUBLIC_URL  + "/Team_Pfp/default.jpg" : process.env.PUBLIC_URL + item.pfp}
               alt="Person"

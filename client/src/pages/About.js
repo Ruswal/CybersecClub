@@ -3,7 +3,7 @@ import Typewriter from "typewriter-effect";
 
 const About = () => {
   return (
-    <div className="h-[80vh] w-[90%] md:w-[90%] sm:w-[70%] flex-col gap-4 m-auto flex items-center justify-center">
+    <div className="min-h-[80vh] w-[90%] md:w-[90%] sm:w-[70%] flex-col gap-4 m-auto flex items-center justify-center">
         <div>
             <h1 className="text-green-400 text-2xl font-semibold">Who are we ?</h1>
         </div>
