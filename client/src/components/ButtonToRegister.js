@@ -83,8 +83,8 @@ const ButtonToRegister = () => {
         // toast.error("Something's wrong, please reload")
         setShowModal(true);
         // createUser();
-      } else if (err.response.status === 204) {
-        setShowModal(true);
+      } else {
+        console.log("Error", err);
       }
     }
   };

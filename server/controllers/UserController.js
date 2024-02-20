@@ -2,8 +2,24 @@ const express = require("express");
 const app = express();
 const User = require("../models/User");
 const admin = require("firebase-admin");
-const serviceAccount = require("./uofrcybersecurity-firebase-adminsdk-ji11e-b4eb398279.json");
+// const serviceAccount = require("./uofrcybersecurity-firebase-adminsdk-ji11e-b4eb398279.json");
 const Events = require("../models/Events");
+require("dotenv").config();
+
+const serviceAccount =
+{
+  "type": "service_account",
+  "project_id": "uofrcybersecurity",
+  "private_key_id": process.env.private_key_id,
+  "private_key": process.env.private_key,
+  "client_email": process.env.client_email,
+  "client_id": process.env.client_id,
+  "auth_uri": process.env.auth_uri,
+  "token_uri": process.env.token_uri,
+  "auth_provider_x509_cert_url": process.env.auth_provider_x509_cert_url,
+  "client_x509_cert_url": process.env.client_x509_cert_url,
+  "universe_domain": process.env.universe_domain
+}
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
@@ -75,7 +91,7 @@ exports.addUsers = async (req, res) => {
   }
 };
 
-exports.getEventById = async(req, res) => {
+exports.getEventById = async (req, res) => {
   const id = req.params.id;
   try {
     const event = await Events.findById(id);
@@ -84,7 +100,7 @@ exports.getEventById = async(req, res) => {
     } else {
       res.status(404).json("Event not found!");
     }
-  } catch(err){
+  } catch (err) {
     console.error(err);
     res.status(500).json("Internal Server Error");
   }
