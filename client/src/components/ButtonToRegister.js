@@ -75,6 +75,8 @@ const ButtonToRegister = () => {
           if (res.status === 409) {
             console.log("loggedin successfully");
           } else if (res.status === 200) {
+            console.log("loggedin successfully");
+          } else if (res.status === 404) {
             setShowModal(true);
           }
         });
