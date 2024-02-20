@@ -10,7 +10,7 @@ const RegisterForSingleEvent = () => {
     console.log(user);
     const { id } = useParams();
     const [email, setEmail] = useState(user.email);
-    const [Name, setName] = useState(user.displayName);
+    const [Name, setName] = useState(user.name);
     const [phone, setPhone] = useState("");
     const [year, setYear] = useState(user.year);
     const [major, setMajor] = useState(user.major);

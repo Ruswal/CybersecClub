@@ -85,6 +85,7 @@ const ButtonToRegister = () => {
         // createUser();
       } else {
         console.log("Error", err);
+        localStorage.removeItem("auth_token");
       }
     }
   };
@@ -101,15 +102,19 @@ const ButtonToRegister = () => {
       })
       .then((res) => {
         console.log(res.data);
-        // setUser(res.data);
+        setUser(res.data);
       })
       .catch((err) => {
         // if(err. === 404) {
         // console.log("User not found");
         // setShowModal(true);
         // } else if (err.response.status === 204) {
-        console.log("User not found", err);
-        setShowModal(true);
+          if(err.response.status === 404) {
+            // console.log("User not found", err);
+            setShowModal(true);
+          } else {
+            console.log("Error", err);
+          }
         // }
       });
   };
@@ -226,7 +231,7 @@ const ButtonToRegister = () => {
             <h1 className="text-green-500 bg-transparent text-2xl ml-[-50px] gap-4">
               Ohoye{" "}
               <span className="bg-gray-900 w-full rounded-md p-1">
-                {user.displayName}
+                {user.name}
               </span>
               !
             </h1>
