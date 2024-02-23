@@ -177,7 +177,7 @@ const ButtonToRegister = () => {
             </label>
             <input
               className="ml-6 p-2 rounded-md text-green-500 bg-gray-900"
-              type="text"
+              type="number"
               placeholder="Enter your year"
               value={year}
               onChange={(e) => setYear(e.target.value)}
