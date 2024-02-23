@@ -33,6 +33,7 @@ const ButtonToRegister = () => {
 
   const createUser = async () => {
     // e.preventDefault();
+    ;
     console.log(user);
     await axios
       .post(
@@ -93,12 +94,12 @@ const ButtonToRegister = () => {
   };
 
   const getUser = async () => {
-    const access_token = localStorage.getItem("auth_token");
-    // console.log(access_token);
+    const freshToken = await auth.currentUser.getIdToken(true);
+    localStorage.setItem("auth_token", freshToken);
     await axios
       .get(`${backendUrl}/api/user/getuser`, {
         headers: {
-          Authorization: access_token,
+          Authorization: freshToken,
           email: user.email,
         },
       })
