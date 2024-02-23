@@ -60,7 +60,7 @@ const Events = () => {
                     <div onClick={() => {
                         setSelectedEventId(event._id)
                         navigate(`/event/${event._id}`)
-                        }} className="text-green-500 border-[2px] border-green-400 p-4 rounded-md">
+                        }} className="text-green-500 cursor-pointer border-[2px] border-green-400 p-4 rounded-md">
                         <h2 className="font-semibold text-2xl">{event.title}</h2>
                         <p>{event.description}</p>
                         <img className="h-32 w-full rounded-md" src={event.image} alt="event" />
