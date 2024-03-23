@@ -6,7 +6,7 @@ import { ToastContainer, toast } from "react-toastify";
 
 export const UserContext = createContext();
 // export const backendUrl = "http://localhost:3001";
-export const backendUrl = "https://uofrcybersecclub.onrender.com";
+export const backendUrl = "https://cybersecclub.onrender.com";
 function App() {
   const [user, setUser] = useState({});
   const [selectedEventId, setSelectedEventId] = useState(null);
