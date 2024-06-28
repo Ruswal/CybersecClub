@@ -8,7 +8,7 @@ require("dotenv").config();
 app.use(cors({
   origin: "*",
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-  "allowedHeaders": ["Content-Type", "Authorization", "email"]
+  allowedHeaders: "Authorization,Origin,X-Requested-With,Content-Type,Accept,Access-Control-Allow-Request-Method,Access-Control-Allow-Origin,Access-Control-Allow-Credentials,email"
 }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
