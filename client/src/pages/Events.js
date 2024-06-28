@@ -70,6 +70,7 @@ const Events = () => {
                         </div>
                     </div>
                 ))}
+                {events.length ===0 && <h1 className="text-red-500">There are no upcoming events yet, but the team is cooking something 👀</h1>}
             </div>
         </div>
     );
