@@ -234,9 +234,9 @@ const ButtonToRegister = () => {
         <div className="bg-transparent">
           {Object.keys(user).length !== 0 && !showModal && (
             <h1 className="text-green-500 bg-transparent text-2xl ml-[-50px] gap-4">
-              Ohoye{" "}
+              Hello{" "}
               <span className="bg-gray-900 w-full rounded-md p-1">
-                {user.name}
+                {user.name  || "Hacker"}
               </span>
               !
             </h1>
