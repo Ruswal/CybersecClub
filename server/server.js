@@ -6,7 +6,8 @@ const { User } = require("./models/User");
 const mongoose = require("mongoose");
 require("dotenv").config();
 app.use(cors({
-  origin: "*"
+  origin: "*",
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
 }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
