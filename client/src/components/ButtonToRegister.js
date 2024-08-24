@@ -118,7 +118,6 @@ const ButtonToRegister = () => {
           } else {
             console.log("Error", err);
             localStorage.removeItem("auth_token");
-            window.location.reload();
           }
         // }
       });
