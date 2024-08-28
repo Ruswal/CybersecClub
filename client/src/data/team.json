@@ -8,7 +8,7 @@
         {"name": "Mohammad Zafar", "position": "Treasurer", "pfp": "/Team_Pfp/zafar.jpg"},
         {"name": "Tommoy Chowdhary", "position": "Club Secretary", "pfp": "/Team_Pfp/Tonmoy.jpeg"},
         {"name": "Md. Shamim Towhid", "position": "Technical Lead", "pfp": "/Team_Pfp/samim.jpg"},
-        {"name": "Md. Majdi Abdlehaim", "position": "Event Lead", "pfp": null}
+        {"name": "Md. Majdi Abdlehaim", "position": "Event Lead", "pfp": "/Team_Pfp/majdi.jpg"}
     ]
 
 }
