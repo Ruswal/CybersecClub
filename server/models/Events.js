@@ -21,6 +21,10 @@ const eventSchema = new Schema({
         type: String,
         required: true,
     },
+    active: {
+        type: Boolean,
+        required: true,
+    },
     registrants: [{
         email: {
             type: String,

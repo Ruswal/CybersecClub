@@ -101,7 +101,8 @@ exports.getAllEvents = async (req, res) => {
         image: event.image,
         Date: event.Date,
         location: event.location,
-        _id: event._id
+        _id: event._id,
+        active: event.active,
       };
     });
     res.status(200).json(filteredEvents);
