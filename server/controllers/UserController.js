@@ -63,13 +63,15 @@ exports.getUserByEmail = async (req, res) => {
 
 exports.addUsers = async (req, res) => {
   try {
-    const { name, email, image, major, year } = req.body;
+    const { name, email, image, major, year, studentId, universityEmail } = req.body;
     const result = await User.create({
       name,
       email,
       image,
       major,
       year,
+      studentId,
+      universityEmail
     })
       .then((result) => {
         res.status(200).json("Great Success!");

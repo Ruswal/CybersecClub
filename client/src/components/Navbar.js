@@ -45,7 +45,6 @@ const Navbar = () => {
   useEffect(() => {
     const auth = getAuth();
     onAuthStateChanged(auth, (userInside) => {
-      console.log(Object.keys(userInside).length, Object.keys(user).length, "userrr")
       if (Object.keys(userInside).length > 0 && Object.keys(user).length === 0) {
         setUser(userInside);
         if (localStorage.getItem("auth_token") === null) {
