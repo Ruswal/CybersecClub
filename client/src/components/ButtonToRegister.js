@@ -124,14 +124,13 @@ const ButtonToRegister = () => {
         // console.log("User not found");
         // setShowModal(true);
         // } else if (err.response.status === 204) {
-        if (err.response.status === 404) {
-          // console.log("User not found", err);
-          setShowModal(true);
-        } else {
-          console.log("Error", err);
-          localStorage.removeItem("auth_token");
-          window.location.reload();
-        }
+          if(err.response.status === 404) {
+            // console.log("User not found", err);
+            setShowModal(true);
+          } else {
+            console.log("Error", err);
+            localStorage.removeItem("auth_token");
+          }
         // }
       });
   };
