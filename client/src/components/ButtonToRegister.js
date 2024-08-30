@@ -28,13 +28,19 @@ import "react-toastify/dist/ReactToastify.css";
 const ButtonToRegister = () => {
   const [showModal, setShowModal] = React.useState(false);
   const { user, setUser } = useContext(UserContext);
-  const [major, setMajor] = useState("");
-  const [year, setYear] = useState("");
+  const [major, setMajor] = useState("Computer Science");
+  const [year, setYear] = useState(1);
+  const [studentId, setStudentId] = useState("");
+  const [universityEmail, setUniversityEmail] = useState("");
 
   const createUser = async () => {
-    // e.preventDefault();
-    ;
-    console.log(user);
+    // validate the major, year, studentId, universityEmail
+    if (major === "" || year === null) {
+      console.log("Please fill in all the fields", major, year);
+      toast.error("Please fill in all the fields");
+      return;
+    }
+
     await axios
       .post(
         `${backendUrl}/api/user/createuser`,
@@ -44,6 +50,8 @@ const ButtonToRegister = () => {
           image: user.photoURL,
           major: major,
           year: year,
+          studentId: studentId,
+          universityEmail: universityEmail + "@uregina.ca",
         },
         {
           headers: {
@@ -52,7 +60,10 @@ const ButtonToRegister = () => {
           },
         }
       )
-      .then((res) => toast.success("Registered successfully!"));
+      .then((res) => {
+        toast.success("Registered successfully!");
+        setShowModal(false);
+      });
   };
   const signIn = async () => {
     try {
@@ -63,6 +74,7 @@ const ButtonToRegister = () => {
       const name = result.user.displayName;
       const auth_token = result.user.accessToken;
       localStorage.setItem("auth_token", result.user.accessToken);
+
       await axios
         .get(`${backendUrl}/api/user/getuser`, {
           headers: {
@@ -129,11 +141,16 @@ const ButtonToRegister = () => {
       getUser();
     }
   }, [user]);
-  
+
+  useEffect(() => {
+    console.log(major, year);
+  }, [major, year]);
+
 
   return (
     <>
       {showModal && (
+
         <ReactModal
           isOpen={showModal}
           onRequestClose={() => setShowModal(false)}
@@ -146,7 +163,6 @@ const ButtonToRegister = () => {
               color: "white",
               border: "none",
               borderRadius: "10px",
-              //   width: "50%",
               maxWidth: "500px",
               height: "50%",
               margin: "auto",
@@ -158,44 +174,92 @@ const ButtonToRegister = () => {
             },
           }}
         >
-          <div className="flex justify-center bg-transparent items-center">
-            <label className="text-2xl bg-transparent font-semibold text-green-400">
-              Major:
-            </label>
-            <input
-              className="ml-2 p-2 rounded-md text-green-500 bg-gray-900"
-              type="text"
-              placeholder="Enter your major"
+          <div className="flex justify-between items-center w-full px-4 bg-transparent">
+            <label className="text-2xl font-semibold text-green-400 bg-transparent">Major:</label>
+            <select
+              className="p-2 w-48 rounded-md text-green-500 bg-gray-900"
               value={major}
               onChange={(e) => setMajor(e.target.value)}
-            />
+            >
+              <option value="Computer Science">Computer Science</option>
+              <option value="Software Engineering">Software Engineering</option>
+              <option value="Computer Engineering">Computer Engineering</option>
+              <option value="Information Systems">Information Systems</option>
+              <option value="Information Security">Information Security</option>
+              <option value="Cybersecurity">Cybersecurity</option>
+              <option value="Computer Science and Security">
+                Software Systems Development
+              </option>
+              <option value="Software Engineering and Security">
+                Software Engineering and Security
+              </option>
+              <option value="CTCH">CTCH</option>
+              <option value="Other">Other</option>
+            </select>
           </div>
-          <div className="flex bg-transparent justify-center items-center">
-            <label className="text-2xl bg-transparent font-semibold text-green-400">
-              Year:
-            </label>
+          <div className="flex justify-between items-center w-full px-4 bg-transparent">
+            <label className="text-2xl font-semibold text-green-400 bg-transparent">Year:</label>
             <input
-              className="ml-6 p-2 rounded-md text-green-500 bg-gray-900"
+              className="p-2 w-48 rounded-md text-green-500 bg-gray-900"
               type="number"
               placeholder="Enter your year"
               value={year}
-              onChange={(e) => setYear(e.target.value)}
+              onChange={(e) => {
+                if (
+                  e.target.value >= 1 &&
+                  e.target.value <= 5 &&
+                  e.target.value !== ""
+                ) {
+                  setYear(e.target.value);
+                } else {
+                  setYear(year);
+                }
+              }}
               max={5}
               min={1}
             />
           </div>
-          <div className="flex bg-transparent justify-center items-center">
-            <button
-              className="bg-gray-900 text-2xl font-semibold mt-4 hover:text-green-500 cursor-pointer text-green-400 p-2 rounded-md"
-              onClick={async () => {
-                setShowModal(false);
-                await createUser();
-              }}
-            >
-              <h1 className="bg-transparent">Submit</h1>
-            </button>
+          <div className="flex justify-between items-center w-full px-4 bg-transparent">
+            <label className="text-2xl font-semibold text-green-400 bg-transparent">
+              Student ID:
+            </label>
+            <input
+              className="p-2 w-48 rounded-md text-green-500 bg-gray-900"
+              type="text"
+              placeholder="Enter your student ID"
+              value={studentId}
+              onChange={(e) => setStudentId(e.target.value)}
+            />
           </div>
+          <div className="flex justify-between items-center w-full px-4 bg-transparent">
+            <label className="text-2xl font-semibold text-green-400 bg-transparent">Email:</label>
+            <div className="flex items-center bg-transparent">
+              <input
+                className="p-2 w-48 rounded-md text-green-500 bg-gray-900"
+                type="text"
+                placeholder="University email"
+                value={universityEmail}
+                onChange={(e) => {
+                  if (e.target.value.includes("@")) {
+                    setUniversityEmail(e.target.value.split("@")[0]);
+                  } else {
+                    setUniversityEmail(e.target.value);
+                  }
+                }}
+              />
+              <p className="text-green-400 text-lg bg-transparent">@uregina.ca</p>
+            </div>
+          </div>
+          <button
+            className="bg-gray-900  text-2xl font-semibold mt-4 hover:text-green-500 cursor-pointer text-green-400 p-2 rounded-md"
+            onClick={async () => {
+              await createUser();
+            }}
+          >
+            <h1 className="bg-transparent">Submit</h1>
+          </button>
         </ReactModal>
+
       )}
       <div className="flex items-center justify-center absolute bg-transparent">
         {!showModal && (
@@ -235,7 +299,7 @@ const ButtonToRegister = () => {
             <h1 className="text-green-500 bg-transparent text-2xl ml-[-50px] gap-4">
               Hello{" "}
               <span className="bg-gray-900 w-full rounded-md p-1">
-                {user.name  || "Hacker"}
+                {user.name || "Hacker"}
               </span>
               !
             </h1>

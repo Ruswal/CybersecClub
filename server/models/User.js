@@ -17,6 +17,14 @@ const userSchema = new Schema({
     year: {
         type: Number,
     },
+    studentId: {
+        type: String,
+        default: ""
+    },
+    universityEmail: {
+        type: String,
+        default: ""
+    },
 });
 
 module.exports = mongoos.model("User", userSchema);
