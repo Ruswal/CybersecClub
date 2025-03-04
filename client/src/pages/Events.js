@@ -41,7 +41,7 @@ const Events = () => {
         .then((res) => {
           console.log(res.data);
           const sortedEvents = res.data.sort((a, b) => {
-            return new Date(a.Date) - new Date(b.Date);
+            return new Date(b.Date) - new Date(a.Date);
           });
           setEvents(sortedEvents);
         })
