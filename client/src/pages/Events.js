@@ -40,7 +40,10 @@ const Events = () => {
         })
         .then((res) => {
           console.log(res.data);
-          setEvents(res.data);
+          const sortedEvents = res.data.sort((a, b) => {
+            return new Date(a.Date) - new Date(b.Date);
+          });
+          setEvents(sortedEvents);
         })
         .catch((err) => {
           console.log(err);
